@@ -1,0 +1,26 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+# add the top header 
+- header: Geno Book
+
+# add the 'about.md' section at the top 
+- url: /intro
+  not_numbered: true
+
+# add a divider: a divider is just a black line separating sections. It is just aesthetics.
+- divider: true
+
+# add a second header
+- header: Contents
+
+# add the first notebook
+- url: /data_akamutu_covid19/API_Call
+  not_numbered: true
+
+  
+# another divider
+- divider: true
+
+# add the LICENSE 
+- url: /LICENSE
+  not_numbered: true
