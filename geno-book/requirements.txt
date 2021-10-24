@@ -1,8 +1,3 @@
 jupyter-book
 matplotlib
 numpy
-altair
-pandas
-jupyterlab
-keras
-vega_datasets
