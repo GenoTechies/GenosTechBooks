@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Content with notebooks
+# # Original Book
 # 
 # You can also create content with Jupyter Notebooks. This means that you can include
 # code blocks and their outputs in your book.
@@ -49,7 +49,7 @@ import numpy as np
 plt.ion()
 
 
-# In[ ]:
+# In[2]:
 
 
 # Fixing random state for reproducibility

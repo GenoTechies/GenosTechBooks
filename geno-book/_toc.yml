@@ -4,5 +4,5 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
 - file: notebooks
+- file: data_akamutu_covid19/districts
