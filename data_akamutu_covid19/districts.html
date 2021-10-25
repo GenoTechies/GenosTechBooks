@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>District Chart &#8212; My sample book</title>
+    <title>District Chart &#8212; Geno book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -77,7 +77,7 @@
       <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Geno book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -212,24 +212,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="district-chart">
 <h1>District Chart<a class="headerlink" href="#district-chart" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>  <span class="c1"># Import the requests library</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="c1"># Query URL</span>
-<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&amp;enddate=2021-09-31&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># Make a GET request to the URL</span>
-<span class="c1"># Print status code (and associated text)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request returned </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> : &#39;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
-<span class="c1"># Print data returned (parsing as JSON)</span>
-<span class="n">payload</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># Parse `response.text` into JSON</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove_input tag_hide_input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&amp;enddate=2021-09-31
 </pre></div>
@@ -348,7 +331,7 @@
     <div class="container">
       <p>
         
-          By The Jupyter Book Community<br/>
+          By Kanchana Sankalpa Gunathilaka<br/>
         
             &copy; Copyright 2021.<br/>
       </p>
