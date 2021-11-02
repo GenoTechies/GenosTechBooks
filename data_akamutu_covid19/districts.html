@@ -74,7 +74,7 @@
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/data-akamutu.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Geno book</h1>
@@ -159,12 +159,9 @@
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+        
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata_akamutu_covid19/districts.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/GenoTechies/GenosTechBooks/geno-book/issues/new?title=Issue%20on%20page%20%2Fdata_akamutu_covid19/districts.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -185,7 +182,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/data_akamutu_covid19/districts.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/GenoTechies/GenosTechBooks/main?urlpath=tree/docs/data_akamutu_covid19/districts.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -212,7 +209,24 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="district-chart">
 <h1>District Chart<a class="headerlink" href="#district-chart" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_remove_input tag_hide_input docutils container">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>  <span class="c1"># Import the requests library</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1"># Query URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&amp;enddate=2021-09-31&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># Make a GET request to the URL</span>
+<span class="c1"># Print status code (and associated text)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request returned </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> : &#39;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="c1"># Print data returned (parsing as JSON)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># Parse `response.text` into JSON</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&amp;enddate=2021-09-31
 </pre></div>

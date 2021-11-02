@@ -1,5 +1,4 @@
 # Welcome to your Geno Book
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is a small step taken by Genotechies to allow knowleage generation based on Sri Lankan data contexts
 
