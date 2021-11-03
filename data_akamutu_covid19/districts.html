@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>District Chart &#8212; Geno book</title>
+    <title>District Wise Infected Count &#8212; Geno book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -100,7 +100,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   District Chart
+   District Wise Infected Count
   </a>
  </li>
 </ul>
@@ -210,9 +210,9 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="district-chart">
-<h1>District Chart<a class="headerlink" href="#district-chart" title="Permalink to this headline">¶</a></h1>
-<p>Click the {fa}rocket –&gt; {guilabel}Live Code button above on this page, and run the code below.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="district-wise-infected-count">
+<h1>District Wise Infected Count<a class="headerlink" href="#district-wise-infected-count" title="Permalink to this headline">¶</a></h1>
+<p>Click the <span class="fa fa-rocket"></span> –&gt; <span class="guilabel">Live Code</span> button above on this page, and run the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivoted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">selected</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;counttext&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;datetext&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;location.formattedAddress&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
