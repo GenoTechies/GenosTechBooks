@@ -190,11 +190,6 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/GenoTechies/GenosTechBooks/blob/main/docs/data_akamutu_covid19/districts.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
                 class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
@@ -217,33 +212,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="district-chart">
 <h1>District Chart<a class="headerlink" href="#district-chart" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>  <span class="c1"># Import the requests library</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="c1"># Query URL</span>
-<span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&amp;enddate=2021-09-31&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># Make a GET request to the URL</span>
-<span class="c1"># Print status code (and associated text)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request returned </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> : &#39;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
-<span class="c1"># Print data returned (parsing as JSON)</span>
-<span class="n">payload</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># Parse `response.text` into JSON</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&amp;enddate=2021-09-31
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Request returned 200 : &#39;OK&#39;
-</pre></div>
-</div>
-</div>
-</div>
+<p>You can edit the code below by clicking the live code button</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
