@@ -41,6 +41,15 @@ html:
   use_repository_button: false
   use_download_button: false  
   # Binder link settings
+
+  
+  # Thebelab settings
+  use_thebelab_button              : true  # If 'true', display a button to allow in-page running code cells with Thebelab
+  thebelab_button_text             : "Thebelab"  # The text to display inside the Thebelab initialization button
+  codemirror_theme                 : "abcdef"  # Theme for codemirror cells, for options see https://codemirror.net/doc/manual.html#config
+  use_show_widgets_button          : true
+
+
   use_binder_button                : true  # If 'true', add a binder button for interactive links
   binderhub_url                    : https://mybinder.org  # The URL for your BinderHub. If no URL, use ""
 
@@ -52,15 +61,13 @@ html:
   binder_repo_branch               : main  # The branch on which your textbook is hosted.
   binderhub_interact_text          : "Interact via Binder"  # The text that interact buttons will contain.
 
-  # Thebelab settings
-  use_thebelab_button              : true  # If 'true', display a button to allow in-page running code cells with Thebelab
-  thebelab_button_text             : "Thebelab"  # The text to display inside the Thebelab initialization button
-  codemirror_theme                 : "abcdef"  # Theme for codemirror cells, for options see https://codemirror.net/doc/manual.html#config
-  use_show_widgets_button          : true
-
 
 launch_buttons:
   notebook_interface: "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url: "https://mybinder.org"
-  colab_url: "https://colab.research.google.com"
   thebe: true
+
+html_theme_options:
+  use_download_button: false
+  use_issues_button: false
+  use_thebelab_button: true
+

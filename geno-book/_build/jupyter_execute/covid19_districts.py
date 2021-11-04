@@ -8,11 +8,25 @@
 # In[1]:
 
 
+get_ipython().system('pip install pandas')
+get_ipython().system('pip install matplotlib')
+get_ipython().system('pip install seaborn')
 import requests  # Import the requests library
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
+
+
+# In[2]:
+
+
+from IPython.core.display import display, HTML
+display(HTML("<style>.toggle-button { display :none !important; }</style>"))
+display(HTML("<style>.toggle-button-hidden { display :none !important; }</style>"))
+display(HTML("<style>.fas fa-download { display :none !important; }</style>"))
+
+
 # Query URL
 url = ('https://covid19-healthylk.herokuapp.com/api/districtstotal?startdate=2021-08-31&enddate=2021-09-31')
 print(url)
@@ -23,7 +37,7 @@ print(f"Request returned {response.status_code} : '{response.reason}'")
 payload = response.json()  # Parse `response.text` into JSON
 
 
-# In[2]:
+# In[3]:
 
 
 data=pd.json_normalize(payload['data'])
@@ -31,7 +45,7 @@ selected=data[["datetext", "counttext","location.formattedAddress"]]
 print(selected)
 
 
-# In[3]:
+# In[4]:
 
 
 pivoted = pd.DataFrame(selected.pivot_table(values='counttext', index='datetext', columns='location.formattedAddress', aggfunc='sum'))
@@ -40,7 +54,7 @@ print(list(pivoted.columns.values))
 #print(pivoted)
 
 
-# In[4]:
+# In[5]:
 
 
 # figure size globally set for matplotlib

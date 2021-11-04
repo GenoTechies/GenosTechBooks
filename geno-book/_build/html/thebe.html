@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Files &#8212; Geno book</title>
+    <title>Make your code cells executable &#8212; Geno book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -143,9 +143,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/markdown.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/thebe.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -160,7 +160,7 @@
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/GenoTechies/GenosTechBooks/geno-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/GenoTechies/GenosTechBooks/geno-book/issues/new?title=Issue%20on%20page%20%2Fthebe.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -176,6 +176,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/GenoTechies/GenosTechBooks/main?urlpath=tree/docs/thebe.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -187,36 +207,19 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-myst">
-   What is MyST?
+  <a class="reference internal nav-link" href="#activate-thebe">
+   Activate Thebe
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-are-roles-and-directives">
-   What are roles and directives?
+  <a class="reference internal nav-link" href="#configure-thebe">
+   Configure Thebe
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-a-directive">
-     Using a directive
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-a-role">
-     Using a role
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-a-citation">
-     Adding a citation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#executing-code-in-your-markdown-files">
-     Executing code in your markdown files
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-execute-cells-when-thebe-is-initialized">
+   Pre-execute cells when Thebe is initialized
+  </a>
  </li>
 </ul>
 
@@ -229,105 +232,87 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="markdown-files">
-<h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Permalink to this headline">¶</a></h1>
-<p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
-in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
-called <strong>MyST Markdown</strong>.</p>
-<div class="section" id="what-is-myst">
-<h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Permalink to this headline">¶</a></h2>
-<p>MyST stands for “Markedly Structured Text”. It
-is a slight variation on a flavor of markdown called “CommonMark” markdown,
-with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
-in the Sphinx ecosystem.</p>
-</div>
-<div class="section" id="what-are-roles-and-directives">
-<h2>What are roles and directives?<a class="headerlink" href="#what-are-roles-and-directives" title="Permalink to this headline">¶</a></h2>
-<p>Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but <strong>roles are written in one line</strong>, whereas
-<strong>directives span many lines</strong>. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.</p>
-<div class="section" id="using-a-directive">
-<h3>Using a directive<a class="headerlink" href="#using-a-directive" title="Permalink to this headline">¶</a></h3>
-<p>At its simplest, you can insert a directive into your book’s content like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{mydirectivename}
-My directive content
-```
+  <div class="tex2jax_ignore mathjax_ignore section" id="make-your-code-cells-executable">
+<span id="launch-thebe"></span><h1>Make your code cells executable<a class="headerlink" href="#make-your-code-cells-executable" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how to bring interactivity to your book. This lets users
+run code and see outputs <em>without leaving the page</em>. Interactivity is provided
+by a kernel running on the public <a class="reference external" href="https://mybinder.org"><strong>MyBinder</strong></a> service.</p>
+<p>For an example, click the <span class="fa fa-rocket"></span> –&gt; <span class="guilabel">Live Code</span> button above on this page, and run the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This will only work if a directive with name <code class="docutils literal notranslate"><span class="pre">mydirectivename</span></code> already exists
-(which it doesn’t). There are many pre-defined directives associated with
-Jupyter Book. For example, to insert a note box into your content, you can
-use the following directive:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
-Here is a note
-```
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x2c1b73c3be0&gt;
 </pre></div>
 </div>
-<p>This results in:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note</p>
+<img alt="_images/thebe_1_1.png" src="_images/thebe_1_1.png" />
 </div>
-<p>In your built book.</p>
-<p>For more information on writing directives, see the
-<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
 </div>
-<div class="section" id="using-a-role">
-<h3>Using a role<a class="headerlink" href="#using-a-role" title="Permalink to this headline">¶</a></h3>
-<p>Roles are very similar to directives, but they are less-complex and written
-entirely on one line. You can insert a role into your book’s content with
-this pattern:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Some content {rolename}`and here is my role&#39;s content!`
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is an experimental feature, and may change in the future or work unexpectedly.</p>
+</div>
+<div class="section" id="activate-thebe">
+<h2>Activate Thebe<a class="headerlink" href="#activate-thebe" title="Permalink to this headline">¶</a></h2>
+<p>To make your content interactive without requiring readers to leave the current page, you can use a project called <a class="reference external" href="https://github.com/executablebooks/thebe">Thebe</a>.
+This provides you with a <span class="guilabel">Live Code</span> button that, when clicked, will convert each code cell into an <strong>interactive</strong> cell that can be edited.
+It also adds a “run” button to each cell, and connects to a Binder kernel running in the cloud.</p>
+<p>To add a Thebe button to your Jupyter Book pages, take these steps:</p>
+<ol>
+<li><p>First, <span class="xref myst">add the common launch button configuration</span>. This makes it possible for <code class="docutils literal notranslate"><span class="pre">thebe/</span></code> to use the correct environment and file paths for your content.</p></li>
+<li><p>Activate Thebe integration with the following configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">launch_buttons</span><span class="p">:</span>
+  <span class="nt">thebe                  </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
-<p>Again, roles will only work if <code class="docutils literal notranslate"><span class="pre">rolename</span></code> is a valid role’s name. For example,
-the <code class="docutils literal notranslate"><span class="pre">doc</span></code> role can be used to refer to another page in your book. You can
-refer directly to another page by its relative path. For example, the
-role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`intro`</span></code> will result in: <a class="reference internal" href="intro.html"><span class="doc">Welcome to your Geno Book</span></a>.</p>
-<p>For more information on writing roles, see the
-<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
+</li>
+</ol>
 </div>
-<div class="section" id="adding-a-citation">
-<h3>Adding a citation<a class="headerlink" href="#adding-a-citation" title="Permalink to this headline">¶</a></h3>
-<p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
-the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
-this: <a href="#id1"><span class="problematic" id="id2">:cite:`holdgraf_evidence_2014`</span></a>.</p>
-<p>Moreover, you can insert a bibliography into your page with this syntax:
-The <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive must be used for all the <code class="docutils literal notranslate"><span class="pre">{cite}</span></code> roles to
-render properly.
-For example, if the references for your book are stored in <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>,
-then the bibliography is inserted with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography}
-```
+<div class="section" id="configure-thebe">
+<h2>Configure Thebe<a class="headerlink" href="#configure-thebe" title="Permalink to this headline">¶</a></h2>
+<p>In addition, you can configure the Binder settings that are used to provide a kernel for Thebe to run the code.
+These use the same configuration fields as the BinderHub interact buttons described above.
+For information about how to do this, see <span class="xref myst">the BinderHub launch button documentation</span>.</p>
+</div>
+<div class="section" id="pre-execute-cells-when-thebe-is-initialized">
+<h2>Pre-execute cells when Thebe is initialized<a class="headerlink" href="#pre-execute-cells-when-thebe-is-initialized" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you’d like to run some code cells <em>immediately</em> when a kernel is requested.
+This might be code that you then hide from the user in order to narrow the focus of what they interact with.
+This is possible by using <strong>cell tags</strong> for the Jupyter Notebook.</p>
+<p>Adding the tag <span class="guilabel">thebe-init</span> to any code cell will cause Thebe to run this cell after it has received a kernel.
+Any subsequent Thebe cells will have access to the same environment (e.g. any module imports made in the initialization cell).</p>
+<p>You can then pair this with something like <span class="guilabel">hide-input</span> in order to run initialization code that your user doesn’t immediately see.
+For example, below we’ll initialize a variable in a hidden cell, and then tell another cell to print the output of that variable.</p>
+<div class="cell tag_hide-input tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_hidden_variable</span> <span class="o">=</span> <span class="s1">&#39;wow, it worked!&#39;</span>
 </pre></div>
 </div>
-<p>Resulting in a rendered bibliography that looks like:</p>
 </div>
-<div class="section" id="executing-code-in-your-markdown-files">
-<h3>Executing code in your markdown files<a class="headerlink" href="#executing-code-in-your-markdown-files" title="Permalink to this headline">¶</a></h3>
-<p>If you’d like to include computational content inside these markdown files,
-you can use MyST Markdown to define cells that will be executed when your
-book is built. Jupyter Book uses <em>jupytext</em> to do this.</p>
-<p>First, add Jupytext metadata to the file. For example, to add Jupytext metadata
-to this markdown page, run this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">markdown</span><span class="o">.</span><span class="n">md</span>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The variable for this is defined in the cell above!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_hidden_variable</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Once a markdown file has Jupytext metadata in it, you can add the following
-directive to run the code at build time:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{code-cell}
-print(&quot;Here is some code to execute&quot;)
-```
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wow, it worked!
 </pre></div>
 </div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<p>For more information about executing computational content with Jupyter Book,
-see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyST-NB documentation</a>.</p>
+</div>
 </div>
 </div>
 </div>
