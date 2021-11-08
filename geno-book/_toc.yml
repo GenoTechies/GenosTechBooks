@@ -4,5 +4,4 @@
 format: jb-book
 root: intro
 chapters:
-- file: notebooks
 - file: covid19_districts
