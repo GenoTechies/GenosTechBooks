@@ -42,8 +42,6 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -190,6 +188,50 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="welcome-to-your-geno-book">
 <h1>Welcome to your Geno Book<a class="headerlink" href="#welcome-to-your-geno-book" title="Permalink to this headline">¶</a></h1>
 <p>This is a small step taken by Genotechies to allow knowleage generation based on data in Sri Lankan context</p>
+<html>
+  <head>
+    <title>An active web page</title>
+    <script type="text/x-thebe-config">
+      {
+        bootstrap: true,
+        selector: "pre",
+        requestKernel: true,
+    binderOptions: {
+        repo: "binder-examples/requirements",
+        ref: "master",
+    },
+      }
+    </script>
+  <script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+     <script >$.getScript("https://unpkg.com/thebe@latest")
+    .done(function (script, textStatus) {
+           thebelab.events.on("request-kernel")((kernel) => {
+    // Find any cells with an initialization tag and ask Thebe to run them when ready
+    kernel.requestExecute({code: "import numpy as np"})
+    kernel.requestExecute({code: "import matplotlib.pyplot as plt"})
+      });
+    })
+</script>
+  </head>
+  <body>
+ part 1:
+    <pre>
+    %matplotlib inline
+import ipywidgets as widgets
+import requests  # Import the requests library
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import seaborn as sns
+    </pre>
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua:
+    <pre data-executable="true">
+x = np.linspace(0,10)
+plt.plot(x, np.sin(x))
+plt.plot(x, np.cos(x))
+    </pre>
+  </body>
+</html>
 <div class="toctree-wrapper compound">
 </div>
 </div>

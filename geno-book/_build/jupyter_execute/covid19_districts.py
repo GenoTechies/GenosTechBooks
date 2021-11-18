@@ -70,7 +70,7 @@ print('For other district select it form the dropdown below >>>')
 def f(x):
     print("District changed to %s" % x)
     filtedVals=selected[selected['location.formattedAddress'].str.contains(x)]
-    #print(filtedVals)
+    print(filtedVals)
     pivoted = pd.DataFrame(filtedVals.pivot_table(values='counttext', index='datetext', columns='location.formattedAddress', aggfunc='sum'))
     return pivoted
 
@@ -83,7 +83,7 @@ def f(x):
     #return param
     #return pd.DataFrame({'Z':[param,param], 'A': ['b', 'b']})
 
-params = widgets.Dropdown(options= ['a','b'])
+params = widgets.Dropdown(options= ['Nuwara Eliya, Sri Lanka', 'Badulla, Sri Lanka', 'Kurunegala, Sri Lanka'])
 
 #bar = widgets.interactive_output(foo, {'param' : params})
 
@@ -92,7 +92,8 @@ c = widgets.IntSlider()
 
 ui = widgets.HBox([params])
 def f2(params):
-    print((params))
+    #print((params))
+    return params;
 
 out = widgets.interactive_output(f2, {'params': params})
 
